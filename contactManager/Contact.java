@@ -65,4 +65,8 @@ public class Contact {
     this.messages = messages;
   }
 
+  public void addMessage(Message message){
+    this.messages.add(message);
+  }
+
 }

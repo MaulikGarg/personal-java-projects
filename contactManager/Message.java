@@ -11,7 +11,7 @@ public class Message {
   }
 
   public void print(){
-    System.out.println("Recipien: " + recipient);
+    System.out.println("Recipient: " + recipient.getName());
     System.out.println("Message ID: " + id);
     System.out.println("> " + content);
   }
