@@ -63,8 +63,10 @@ public class ContactApp{
                     addContact();
                     break;
                 case 3:
+                    searchContact();
                     break;
                 case 4:
+                    deleteContact();
                     break;
                 case 5:
                     return;
@@ -79,6 +81,12 @@ public class ContactApp{
     private static void addContact(){
         System.out.println("Enter the name of the contact: ");
         String name = scanner.nextLine();
+        for(Contact c : contacts){
+            if (c.getName() == name) {
+                System.out.println("Contact " + name + " already exists." );
+                return;
+            }
+        }
         System.out.println("Enter " + name + "'s number: ");
         String number = scanner.nextLine();
         System.out.println("Enter " + name + "'s email: ");
@@ -86,4 +94,30 @@ public class ContactApp{
         contacts.add(new Contact(name, number, email));
         System.out.println("Contact has been added.");
     }
+
+    private static void searchContact(){
+        System.out.println("Enter the name of the contact: ");
+        String name = scanner.nextLine();
+        for(Contact c : contacts){
+            if (c.getName() == name) {
+                c.print();
+                return;
+            }
+        }
+        System.out.println("Failed to find a contact by name: " + name);
+    }
+
+    private static void deleteContact(){
+        System.out.println("Enter the name of the contact to delete: ");
+        String name = scanner.nextLine();
+        for(Contact c : contacts){
+            if (c.getName() == name) {
+                contacts.remove(c);
+                return;
+            }
+        }
+        System.out.println("Failed to find a contact by name: " + name);
+    }
+
+
 }
